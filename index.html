@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome User Agent</title>
+    <script>
+        Object.defineProperty(navigator, 'userAgent', {
+            get: function(){
+                return 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.199 Safari/537.36';
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>User Agent Set to Chrome</h1>
+    <p>Your browser is now identifying as Chrome.</p>
+    <script>
+        window.location.href = 'https://watch.foxtel.com.au/app/#/'; // Replace with the desired website URL
+    </script>
+</body>
+</html>
