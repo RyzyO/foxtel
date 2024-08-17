@@ -2,20 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrome User Agent</title>
+    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+    <title>Chrome Desktop User Agent</title>
     <script>
+        // Spoof the user agent to mimic Chrome on a desktop PC
         Object.defineProperty(navigator, 'userAgent', {
             get: function(){
                 return 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.199 Safari/537.36';
             }
         });
+
+        // Optionally, spoof platform and screen properties to further convince websites it's a desktop
+        Object.defineProperty(navigator, 'platform', {
+            get: function() {
+                return 'Win32'; // Simulate a 32-bit or 64-bit Windows OS
+            }
+        });
+
+        Object.defineProperty(window, 'innerWidth', {
+            get: function() {
+                return 1920; // Typical desktop screen width
+            }
+        });
+
+        Object.defineProperty(window, 'innerHeight', {
+            get: function() {
+                return 1080; // Typical desktop screen height
+            }
+        });
+
+        Object.defineProperty(window.screen, 'width', {
+            get: function() {
+                return 1920; // Spoof screen width
+            }
+        });
+
+        Object.defineProperty(window.screen, 'height', {
+            get: function() {
+                return 1080; // Spoof screen height
+            }
+        });
     </script>
 </head>
 <body>
-    <h1>User Agent Set to Chrome</h1>
-    <p>Your browser is now identifying as Chrome.</p>
+    <h1>User Agent Set to Chrome Desktop</h1>
+    <p>Your browser is now identifying as Chrome on a desktop PC.</p>
     <script>
+        // Redirect to the desired website after setting the user agent
         window.location.href = 'https://watch.foxtel.com.au/app/#/'; // Replace with the desired website URL
     </script>
 </body>
