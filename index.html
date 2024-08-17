@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chrome Desktop User Agent</title>
     <script>
         // Spoof the user agent to mimic Chrome on a desktop PC
@@ -12,36 +12,56 @@
             }
         });
 
-        // Optionally, spoof platform and screen properties to further convince websites it's a desktop
         Object.defineProperty(navigator, 'platform', {
             get: function() {
-                return 'Win32'; // Simulate a 32-bit or 64-bit Windows OS
+                return 'Win32'; // Desktop Windows platform
             }
         });
 
         Object.defineProperty(window, 'innerWidth', {
             get: function() {
-                return 1920; // Typical desktop screen width
+                return 1920; // Desktop width
             }
         });
 
         Object.defineProperty(window, 'innerHeight', {
             get: function() {
-                return 1080; // Typical desktop screen height
+                return 1080; // Desktop height
             }
         });
 
         Object.defineProperty(window.screen, 'width', {
             get: function() {
-                return 1920; // Spoof screen width
+                return 1920; // Desktop screen width
             }
         });
 
         Object.defineProperty(window.screen, 'height', {
             get: function() {
-                return 1080; // Spoof screen height
+                return 1080; // Desktop screen height
             }
         });
+
+        // Simulate no touch capabilities
+        Object.defineProperty(navigator, 'maxTouchPoints', { 
+            get: function() { 
+                return 0; // No touch, like on a desktop PC
+            } 
+        });
+
+        Object.defineProperty(navigator, 'msMaxTouchPoints', { 
+            get: function() { 
+                return 0; // No touch for MS-specific detection
+            } 
+        });
+
+        // Remove orientation to mimic a desktop environment
+        Object.defineProperty(window, 'orientation', {
+            get: function() {
+                return undefined; 
+            }
+        });
+
     </script>
 </head>
 <body>
